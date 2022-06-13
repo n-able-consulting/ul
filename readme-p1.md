@@ -9,14 +9,14 @@ But they will see later that it is just one way of running containers
 
 ### Stopping the MySql server on the demo laptop
 
-- [x] Stop the MySql via MAMP
+- [ ] Stop the MySql via MAMP
 
 **If not done earlier: show local docker install and no running containers, two ways:**
-- [x] via cli
+- [ ] via cli
 ```
 docker ps
 ```
-- [x] visual studio docker plugin
+- [ ] visual studio docker plugin
 
 ### Running an MySql server as a container
 
@@ -25,14 +25,14 @@ docker ps
 As a Image Registry one of the registry sources of Containers, but the one docker default looks for containers.
 Show that their a MySql container can be found, by just searching on mysql.
 
-- [x] Take a moment to show the docker cli.
+- [ ] Take a moment to show the docker cli.
 
-- [x] Start the MySql container
+- [ ] Start the MySql container
 ```
 docker run -d -p 3306:3306 --name=docker-mysql --env="MYSQL_ROOT_PASSWORD=root" --env="MYSQL_PASSWORD=root" --env="MYSQL_DATABASE=users" mysql
 ```
 
-- [x] When running jump into the server to show this container is a computer/server (but mini) just as your own laptop...
+- [ ] When running jump into the server to show this container is a computer/server (but mini) just as your own laptop...
 ```
 docker exec -it docker-mysql bash
 ```
@@ -41,12 +41,12 @@ docker exec -it docker-mysql bash
 ## Building and storing application container image(s)
 
 **Explain Java - JIT Language and precompiling...**
-- [x] Build Jar (in demo dir of with ./demo/...):
+- [ ] Build Jar (in demo dir of with ./demo/...):
 ```
 ./mvn install
 ```
 
-- [x] add first dockerfile and explain it:
+- [ ] add first dockerfile and explain it:
 ```
 FROM openjdk:17-jdk-alpine
 VOLUME /tmp
@@ -55,7 +55,7 @@ COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 
-- [x] Build the UL container for the first time with alpine tag and version number: 
+- [ ] Build the UL container for the first time with alpine tag and version number: 
 ```
 docker build --build-arg JAR_FILE=target/*.jar -t enabledocker/ul:0.1-17-jdk-alpine .
 docker build --build-arg JAR_FILE=target/*.jar -t enabledocker/ul .
@@ -68,19 +68,19 @@ docker build --build-arg JAR_FILE=target/*.jar -t enabledocker/ul .
  docker images
  ```
 
-- [x] log into dockerhub: 
+- [ ] log into dockerhub: 
 ```
 docker login --username enabledocker
 ```
 
-- [x] push current images to docker hub: 
+- [ ] push current images to docker hub: 
 ```
 docker push enabledocker/ul:latest
 docker push enabledocker/ul:0.1-17-jdk-alpine
 ```
 ## Running the container app
 
-- [x] Run container 
+- [ ] Run container 
 ```
 docker run enabledocker/ul:latest
 ```
