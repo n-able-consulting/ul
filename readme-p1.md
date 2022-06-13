@@ -40,6 +40,8 @@ docker exec -it docker-mysql bash
 
 ## Building and storing application container image(s)
 
+You now have the mysql database running in a container. In the next steps you are going to create and run the UL Backoffice container. Clone the UL-Backoffice project on Git (https://github.com/n-able-consulting/ul). Then when locally on your computer you can continue the script.
+
 **Explain Java - JIT Language and precompiling...**
 - [ ] Build Jar (in demo dir of with ./demo/...):
 ```
@@ -117,7 +119,7 @@ docker run --net training ubuntu
 #So explain that you will run the ubuntu container 
 #by jumping into the server, what 
 #is like logging on, so it will stay alive
-docker run -it --net training -e HALLO="hello training: i am an environment variable" ubuntu /bin/bash
+docker run -it --net training -e HELLO="hello training: i am an environment variable" ubuntu /bin/bash
 
 ```
 - [ ] explain the addition of commandline arguments: we added the container to the network & we added an environment variable from the commandline (as argument).
@@ -127,7 +129,7 @@ docker run -it --net training -e HALLO="hello training: i am an environment vari
 -ping the docker-mysql server to show he can be reach over the network
 ```
 #add software
-apt update & apt install mysql-client iputils-ping -y
+apt-get update & apt-get install mysql-client iputils-ping -y
 #show env variables
 env
 #print the hello variable to the commandline
@@ -151,6 +153,7 @@ answers:
 ```
 docker run -p 8080:8080 --name docker-ul --net training enabledocker/ul
 ```
+*If you get an error during this step then there still exists an docker-ul container, though it is not running. Remove the old container before you try to run a container with the same name*
 - [ ] still does not work anyone has a clue?
 * answer: our app is not configured to work talk on the training network to docker-container: we have to change the localhost reference!
 * Take a moment to show them the application-properties file to show them the environment variable to set.
@@ -181,6 +184,7 @@ apt-get update && apt-get install curl host mysql-client iputils-ping -y
 **Now we have an Ubuntu container/server standing by in our network, ready, for testing**
 
 # Completing our demo setup by adding the frontend-application
+clone the ul-frontend (https://github.com/n-able-consulting/ul-frontend) project and continue for the frontend-application with that project.
 
 - [ ] Also now we need a Dockerfile in our project:
 ```
